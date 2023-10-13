@@ -1,3 +1,15 @@
 .idea
 node_modules
 package-lock.json
+dist
+v8.log
+*.swp
+*.swo
+tags
+*.DS_Store
+examples/*/log/*
+site/log/*
+.log
+npm-debug.log
+doc/
+pkg/

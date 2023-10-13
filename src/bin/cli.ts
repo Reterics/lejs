@@ -22,22 +22,28 @@
  * @copyright  (C) 2023 Attila Reterics, attila@reterics.com
  */
 
-const lejs = require('..');
+import * as lejs from '../lejs';
 const args = process.argv.slice(2);
-const fs = require('fs');
-const usage = fs.readFileSync(`${__dirname}/../usage.txt`).toString();
+import * as fs from 'fs';
+const usage = fs.readFileSync(`${__dirname}/../../usage.txt`).toString();
 
 function printUsage() {
     console.log(usage);
 }
 
+interface ArgOptions {
+    output: undefined|string,
+    dataFile: undefined|string,
+    dataInput: undefined|string,
+}
+
 function parseArgs() {
-    const options = {
+    const options: ArgOptions = {
         output: undefined,
         dataFile: undefined,
         dataInput: undefined,
     };
-    let templateFile = null;
+    let templateFile: string|null = null;
 
     for (let i = 0; i < args.length; i++) {
         const arg = args[i];
@@ -104,7 +110,7 @@ function main() {
 
     try {
         const templateContent = fs.readFileSync(templateFile, 'utf8');
-        const rendered = lejs.render(templateContent, data);
+        const rendered = lejs.render(templateContent, data, undefined);
 
         if (options.output) {
             fs.writeFileSync(options.output, rendered, 'utf8');
@@ -118,3 +124,5 @@ function main() {
 }
 
 main();
+
+export { ArgOptions };

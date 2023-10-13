@@ -1,4 +1,3 @@
-'use strict';
 /**
  * Lionel Embedded JavaScript Templates (LeJS)
  * Copyright (C) 2023 Attila Reterics
@@ -21,9 +20,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL
  * @copyright  (C) 2023 Attila Reterics, attila@reterics.com
  */
-
-const fs = require('fs');
-const path = require("path");
+'use strict';
+import * as fs from 'fs'
+import * as path from 'path'
 
 const REGEXPS = {
     variable: {
@@ -41,7 +40,7 @@ const REGEXPS = {
  * @param {undefined|object} options
  * @returns {*}
  */
-function render (string, data, options) {
+export function render (string: string, data, options: object|undefined) {
     const config = REGEXPS.variable;
     return string.replaceAll(config.regexp, (substr) => {
         const variable = substr.substring(config.start.length, substr.length - config.end.length);
@@ -52,7 +51,7 @@ function render (string, data, options) {
     });
 }
 
-function renderFile (file, data, options) {
+export function renderFile (file: string, data: object|undefined, options: object|undefined) {
     let content;
     try {
         if (fs.existsSync(file)) {
@@ -68,17 +67,17 @@ function renderFile (file, data, options) {
     return render(content, data, options);
 }
 
-function compile (string, options) {
+export function compile (string: string, options: object|undefined) {
     return (data) => {
         return render (string, data, options);
     };
 }
 
-
-
+export const version = process.env.npm_package_version || '1.0.0';
+/*
 module.exports = {
     compile,
     renderFile,
     render,
     version: process.env.npm_package_version || '1.0.0'
-};
+};*/

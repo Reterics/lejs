@@ -1,0 +1,10 @@
+test/
+dist
+.idea
+tags
+*.DS_Store
+examples/*/log/*
+.log
+npm-debug.log
+pkg/
+doc/
