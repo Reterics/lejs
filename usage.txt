@@ -1,0 +1,14 @@
+LeJS Embedded JavaScript templates
+{{Usage}}: lejs [options ...] template-file [data variables ...]
+
+{{Options}}:
+  -o,     --output-file FILE            Write the rendered output to FILE rather than stdout.
+  -f,     --data-file FILE              Must be JSON-formatted. Use parsed input from FILE as data for rendering.
+  -i,     --data-input STRING           Must be JSON-formatted and URI-encoded. Use parsed input from STRING as data for rendering.
+  -h,     --help                        Display this help message.
+  -v,   --version                     Display the LeJS version.
+
+{{Examples}}:
+  lejs ./test/files/hello.lejs -f ./data.json
+  lejs ./test/files/hello.lejs -i name=Attila
+  lejs ./template.ejs -o ./output.html
