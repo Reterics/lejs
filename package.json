@@ -1,0 +1,25 @@
+{
+  "name": "@redaty/lejs",
+  "version": "1.0.0",
+  "description": "Lionel Embedded JavaScript Templates",
+  "main": "./lib/lejs.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Reterics/lejs.git"
+  },
+  "keywords": [
+    "template"
+  ],
+  "author": "Attila Reterics <attila@reterics.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Reterics/lejs/issues"
+  },
+  "homepage": "https://github.com/Reterics/lejs#readme"
+}
