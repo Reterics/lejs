@@ -23,32 +23,12 @@
 'use strict';
 import * as fs from 'fs'
 import * as path from 'path'
-
-const REGEXPS = {
-    variable: {
-        start: "{{",
-        end: "}}",
-        regexp: /{{\w*}}/g
-    }
-}
+import Parser from "./parsers";
 
 
-/**
- *
- * @param {string} string
- * @param {object} data
- * @param {undefined|object} options
- * @returns {*}
- */
 export function render (string: string, data, options: object|undefined) {
-    const config = REGEXPS.variable;
-    return string.replaceAll(config.regexp, (substr) => {
-        const variable = substr.substring(config.start.length, substr.length - config.end.length);
-        if (data && data.hasOwnProperty(variable)) {
-            return data[variable];
-        }
-        return "";
-    });
+    const parser = new Parser({cache: false});
+    return parser.render(string, data);
 }
 
 export function renderFile (file: string, data: object|undefined, options: object|undefined) {
