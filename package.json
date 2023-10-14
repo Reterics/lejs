@@ -12,6 +12,7 @@
     "build": "tsc",
     "prepare": "npm run build",
     "test": "jest",
+    "build and test": "tsc && jest",
     "start": "node ./dist/bin/cli.ts"
   },
   "bin": {

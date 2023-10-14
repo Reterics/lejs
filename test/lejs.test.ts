@@ -17,7 +17,8 @@ describe('compiler', function () {
         }, undefined);
         expect(rendered).toBe('Hello World');
     })
-})
+});
+
 describe('if parser', function () {
     it('should parse XML with IF statement correctly', function () {
         const rendered = lejs.renderFile(__dirname + '/files/simplified.xml', {
@@ -46,4 +47,32 @@ describe('if parser', function () {
             .toString();
         expect(rendered).toBe(expectedOutput);
     })
-})
+});
+
+describe('Map parser', function () {
+    it('should parse XML with map correctly', function () {
+        const rendered = lejs.renderFile(__dirname + '/files/map.xml', {
+            invoiceNumber: '001',
+            invoiceLines: [
+                {
+                    productCodeCategory: "Category",
+                    productCodeValue: "Value",
+                },
+                {
+                    productCodeCategory: "Category2",
+                    productCodeValue: "Value2",
+                }
+            ]
+        }, undefined);
+        const expectedOutput = fs.readFileSync(__dirname + '/files/map_output.xml').toString();
+        expect(rendered).toBe(expectedOutput);
+    })
+    it('should parse XML with IF statement correctly, negative test', function () {
+        const rendered = lejs.renderFile(__dirname + '/files/map.xml', {
+            invoiceNumber: '002'
+        }, undefined);
+        const expectedOutput = fs.readFileSync(__dirname + '/files/map_negative_output.xml')
+            .toString();
+        expect(rendered).toBe(expectedOutput);
+    })
+});

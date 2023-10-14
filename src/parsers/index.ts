@@ -1,6 +1,7 @@
 import {ParserOptions, ParserFunc} from "../types/parsers";
 import renderVariable from "./variable";
 import renderIfStatement from "./if";
+import renderMap from "./map";
 
 class Parser {
     private parsers: ParserFunc[]
@@ -8,7 +9,8 @@ class Parser {
     constructor(options: ParserOptions|undefined) {
         this.parsers = [
             renderVariable,
-            renderIfStatement
+            renderIfStatement,
+            renderMap
         ];
         this.cache = !!(options && options.cache); // TODO: ROADMAP
     }

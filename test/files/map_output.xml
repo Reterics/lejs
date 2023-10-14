@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InvoiceData xmlns="http://schemas.nav.gov.hu/OSA/3.0/data" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://schemas.nav.gov.hu/OSA/3.0/data invoiceData.xsd"
+             xmlns:common="http://schemas.nav.gov.hu/NTCA/1.0/common"
+             xmlns:base="http://schemas.nav.gov.hu/OSA/3.0/base">
+    <invoiceNumber>001</invoiceNumber>
+    <invoiceMain>
+
+        <line>
+            <lineNumber>0</lineNumber>
+            <productCodes>
+                <productCode>
+                    <productCodeCategory>Category</productCodeCategory>
+                    <productCodeValue>Value</productCodeValue>
+                </productCode>
+            </productCodes>
+            <lineExpressionIndicator>true</lineExpressionIndicator>
+        </line>
+
+        <line>
+            <lineNumber>1</lineNumber>
+            <productCodes>
+                <productCode>
+                    <productCodeCategory>Category2</productCodeCategory>
+                    <productCodeValue>Value2</productCodeValue>
+                </productCode>
+            </productCodes>
+            <lineExpressionIndicator>true</lineExpressionIndicator>
+        </line>
+
+    </invoiceMain>
+</InvoiceData>
