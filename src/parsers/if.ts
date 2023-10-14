@@ -12,8 +12,8 @@ const renderIfStatement: ParserFunc = (string: string, data: object|null, option
 
                 if (data && name && data[name] && data[name] !== "") {
                     const values = match
-                        .replaceAll(`{#${name}}}`, '')
-                        .replaceAll(`{/#${name}}}`, '');
+                        .replaceAll(`${config.start}${name}${config.end}`, '')
+                        .replaceAll(`${config.close_start}${name}${config.end}`, '');
                     string = string.replace(match, values);
                 } else if (options.defaultValue === 'empty' || options.defaultValue === 'default') {
                     // Remove the matched string from the XML content.

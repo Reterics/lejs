@@ -1,0 +1,11 @@
+<p>Hello {{world}}</p>
+<ul>
+{>li}}
+    <li>Index: {{+index}}. {{+value}}</li>
+{/>li}}
+</ul>
+{#details}}
+<details>
+    {{detail}}
+</details>
+{/#details}}

@@ -9,13 +9,14 @@ export const REGEXPS: ParserConstants = {
     if: {
         start: "{#",
         end: "}}",
+        close_start: "{\/#",
         regexp: /{#\w*}}[\s\S]*?{\/#\w*}}/g
     },
     map: {
         start: "{>",
         end: "}}",
-        close_start: "{\\>",
-        regexp: /{>\w*}}[\s\S]*?{\\>\w*}}/g,
+        close_start: "{\/>",
+        regexp: /{>\w*}}[\s\S]*?{\/>\w*}}/g,
     },
     map_variable: {
         start: "{{+",

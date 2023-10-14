@@ -1,0 +1,13 @@
+{
+  "world": "World",
+  "li": [
+    {
+      "value": "Line 1"
+    },
+    {
+      "value": "Line 2"
+    }
+  ],
+  "details": true,
+  "detail": "This value is visible, because details is true"
+}

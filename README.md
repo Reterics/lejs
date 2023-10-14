@@ -9,15 +9,12 @@ It should not be used in production environment.
 # Features
 
  - Unescaped output with `{{ }}`
- - Static caching of templates
-
-## Examples
-
-```
-<p>Hello {{world}}</p>
-```
+ - IF statement with `{# }} {/# ]]`
+ - Maping objects with `{> }} {/> }}`
 
 ## Usage
+
+### Node
 
 ```javascript
 let template = lejs.compile(str, options);
@@ -30,6 +27,70 @@ lejs.render(str, data, options);
 lejs.renderFile(filename, data, options);
 ```
 
+### CLI
+
+**.lejs**
+```html
+<p>Hello {{world}}</p>
+<ul>
+{>li}}
+    <li>Index: {{+index}}. {{+value}}</li>
+{/>li}}
+</ul>
+{#details}}
+<details>
+    {{detail}}
+</details>
+{/#details}}
+
+```
+
+**JSON data**
+```json
+{
+  "world": "World",
+  "li": [
+    {
+      "value": "Line 1"
+    },
+    {
+      "value": "Line 2"
+    }
+  ],
+  "details": true,
+  "detail": "This value is visible, because details is true"
+}
+```
+
+**Output**
+```html
+<p>Hello World</p>
+<ul>
+
+    <li>Index: 0. Line 1</li>
+
+    <li>Index: 1. Line 2</li>
+
+</ul>
+
+<details>
+    This value is visible, because details is true
+</details>
+```
+
+**CLI call**
+```bash
+node ./dist/bin/cli.js ./test/files/example.lejs -f ./test/files/example.json
+# OR
+lejs ./test/files/example.lejs -f ./test/files/example.json
+```
+
+
+
 ### Tags
-  - `{{` Value output for template
-  - `}}` End Tag
+  - `{{ }}` Value output tag
+  - `{# }}` IF statement start tag
+  - `{/# }}` IF statement end tag
+  - `{>  }}` MAP start tag
+  - `{{+ }}` MAP variable tag
+  - `{/> }}` MAP end tag

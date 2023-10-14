@@ -16,6 +16,6 @@
             </productCodes>
             <lineExpressionIndicator>true</lineExpressionIndicator>
         </line>
-{\>invoiceLines}}
+{/>invoiceLines}}
     </invoiceMain>
 </InvoiceData>
