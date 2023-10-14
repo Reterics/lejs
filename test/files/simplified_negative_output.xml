@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InvoiceData xmlns="http://schemas.nav.gov.hu/OSA/3.0/data" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://schemas.nav.gov.hu/OSA/3.0/data invoiceData.xsd"
+             xmlns:common="http://schemas.nav.gov.hu/NTCA/1.0/common"
+             xmlns:base="http://schemas.nav.gov.hu/OSA/3.0/base">
+    <invoiceNumber>001</invoiceNumber>
+    <invoiceIssueDate>2023-10-14</invoiceIssueDate>
+    <completenessIndicator>false</completenessIndicator>
+    <invoiceMain>
+        <invoice>
+            <invoiceHead>
+                <customerInfo>
+                    <customerVatStatus>DOMESTIC</customerVatStatus>
+
+                </customerInfo>
+            </invoiceHead>
+        </invoice>
+    </invoiceMain>
+</InvoiceData>

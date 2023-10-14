@@ -4,5 +4,10 @@ export const REGEXPS = {
         start: "{{",
         end: "}}",
         regexp: /{{\w*}}/g
+    },
+    if: {
+        start: "{#",
+        end: "}}",
+        regexp: /{#\w*}}[\s\S]*?{\/#\w*}}/g
     }
 }
