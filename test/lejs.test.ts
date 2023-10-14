@@ -1,11 +1,11 @@
 'use strict';
-
-const lejs = require('..');
-const {readFileSync} = require("fs");
+import {describe, expect, it} from '@jest/globals';
+import * as lejs from '..';
+import * as fs from "fs";
 
 describe('compiler', function () {
     it('should compile hello world', function () {
-        const compiler = lejs.compile('Hello {{world}}');
+        const compiler = lejs.compile('Hello {{world}}', undefined);
         expect(compiler({
             world: 'World'
         })).toBe('Hello World');
@@ -14,7 +14,7 @@ describe('compiler', function () {
     it('should compile hello world from file', function () {
         const rendered = lejs.renderFile(__dirname + '/files/hello.lejs', {
             world: 'World'
-        });
+        }, undefined);
         expect(rendered).toBe('Hello World');
     })
 })
@@ -28,8 +28,8 @@ describe('if parser', function () {
             customerTaxpayerId: '56666666',
             customerVatCode: '1',
             customerCountyCode: '40',
-        });
-        const expectedOutput = readFileSync(__dirname + '/files/simplified_output.xml').toString();
+        }, undefined);
+        const expectedOutput = fs.readFileSync(__dirname + '/files/simplified_output.xml').toString();
         expect(rendered).toBe(expectedOutput);
     })
     it('should parse XML with IF statement correctly, negative test', function () {
@@ -41,8 +41,8 @@ describe('if parser', function () {
             customerTaxpayerId: '56666666',
             customerVatCode: '1',
             customerCountyCode: '40',
-        });
-        const expectedOutput = readFileSync(__dirname + '/files/simplified_negative_output.xml')
+        }, undefined);
+        const expectedOutput = fs.readFileSync(__dirname + '/files/simplified_negative_output.xml')
             .toString();
         expect(rendered).toBe(expectedOutput);
     })
