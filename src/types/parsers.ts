@@ -7,7 +7,9 @@ export interface ParserConstant {
     start: string,
     end: string,
     close_start?: string,
-    regexp: RegExp
+    regexp: RegExp,
+    start_regexp?: RegExp
+    end_regexp?: RegExp
 }
 
 export interface ParserConstants {

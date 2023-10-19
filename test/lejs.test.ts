@@ -75,4 +75,16 @@ describe('Map parser', function () {
             .toString();
         expect(rendered).toBe(expectedOutput);
     })
+
+    // node ./dist/bin/cli.js ./test/files/ifstack.txt -i "test=2&test2=1&test3"
+    it('should parse IF statements if they stacked inside each other', function () {
+        const rendered = lejs.renderFile(__dirname + '/files/ifstack.txt', {
+            test: '002',
+            test2: '002',
+            test3: false
+        }, undefined);
+        const expectedOutput = fs.readFileSync(__dirname + '/files/ifstack.txt.out')
+            .toString();
+        expect(rendered).toBe(expectedOutput);
+    })
 });

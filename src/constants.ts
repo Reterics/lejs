@@ -10,7 +10,8 @@ export const REGEXPS: ParserConstants = {
         start: "{#",
         end: "}}",
         close_start: "{\/#",
-        regexp: /{#\w*}}[\s\S]*?{\/#\w*}}/g
+        regexp: /{#\w*}}[\s\S]*?{\/#\w*}}/g,
+        start_regexp: /{#!?\w*}}/g
     },
     map: {
         start: "{>",
