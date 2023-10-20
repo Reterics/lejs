@@ -5,19 +5,29 @@ import renderVariable from "./variable";
 
 const renderMap: ParserFunc = (string: string, data: object|null, options: ParserRenderOptions): string => {
     const config = REGEXPS.map;
-    const matches = string.match(config.regexp);
 
-    if (matches && matches.length > 0) {
-        for (let match of matches) {
-            if (match) {
-                const localMatches = match.match(/{>(\w*)}}/);
-                const name = localMatches && localMatches[1] ? localMatches[1] : null;
+    if (config.start_regexp) {
+        const matches = string.match(config.start_regexp) || [];
+        while (matches.length) {
+            const starterTag = matches.pop();
+            if (starterTag) {
+                const lastIndex = string.lastIndexOf(starterTag);
+                const startLength = config.start.length;
 
-                if (name && data && data[name]) {
-                    const content = match.replaceAll(`${config.start}${name}${config.end}`, '')
-                        .replaceAll(`${config.close_start}${name}${config.end}`, '');
+                const closingTag = (config.close_start || config.start) +
+                        starterTag.substring(startLength),
+                    closingPosition = string.indexOf(closingTag, lastIndex),
+                    closingPositionEnd = closingPosition + closingTag.length;
+
+                const name = starterTag.substring(startLength, starterTag.length - config.end.length);
+
+                const start = string.substring(0, lastIndex);
+                const end = string.substring(closingPositionEnd);
+
+                if (data && name && data[name] && data[name] !== "" ) {
+                    const content = string.substring(lastIndex + starterTag.length, closingPosition);
+
                     let generated: string[] = [];
-
                     if (Array.isArray(data[name])) {
                         generated = data[name].reduce((array, variable) => {
                             if (variable.index === undefined) {
@@ -43,10 +53,10 @@ const renderMap: ParserFunc = (string: string, data: object|null, options: Parse
                             }
                         }
                     }
-                    string = string.replace(match, generated.join(''));
+                    string = start + generated.join('') + end;
                 } else if (options.defaultValue === 'empty' || options.defaultValue === 'default') {
                     // Remove the matched string from the XML content.
-                    string = string.replace(match, '');
+                    string = start + end;
                 }
             }
         }
