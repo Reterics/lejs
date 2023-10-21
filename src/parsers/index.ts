@@ -8,9 +8,9 @@ class Parser {
     private cache: boolean;
     constructor(options: ParserOptions|undefined) {
         this.parsers = [
-            renderVariable,
             renderIfStatement,
-            renderMap
+            renderMap,
+            renderVariable,
         ];
         this.cache = !!(options && options.cache); // TODO: ROADMAP
     }
