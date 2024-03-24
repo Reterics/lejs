@@ -22,5 +22,5 @@ export interface ParserRenderOptions {
 }
 
 export interface ParserFunc {
-    (string: string, data: (object | null), options: ParserRenderOptions): string
+    (string: string, data?: (object | null), options?: ParserRenderOptions): string
 }

@@ -15,7 +15,7 @@ class Parser {
         this.cache = !!(options && options.cache); // TODO: ROADMAP
     }
 
-    render(string: string, data: (object | null)) {
+    render(string: string, data?: (object | null)) {
         return this.parsers.reduce((str, parser) => {
             return parser(str, data, { defaultValue: 'default' });
         }, string);

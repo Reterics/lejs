@@ -53,11 +53,6 @@ export function compile (string: string, options: object|undefined) {
     };
 }
 
-export const version = process.env.npm_package_version || '1.0.0';
-/*
-module.exports = {
-    compile,
-    renderFile,
-    render,
-    version: process.env.npm_package_version || '1.0.0'
-};*/
+
+export const version = typeof process !== 'undefined' && process.env.npm_package_version
+    ? process.env.npm_package_version : '1.0.0';

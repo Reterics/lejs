@@ -1,6 +1,6 @@
 {
   "name": "@redaty/lejs",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Lionel Embedded JavaScript Templates",
   "main": "dist/lejs.js",
   "types": "dist/lejs.d.ts",

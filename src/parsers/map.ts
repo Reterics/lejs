@@ -3,7 +3,7 @@ import {REGEXPS} from "../constants";
 import renderVariable from "./variable";
 
 
-const renderMap: ParserFunc = (string: string, data: object|null, options: ParserRenderOptions): string => {
+const renderMap: ParserFunc = (string: string, data: object|null, options?: ParserRenderOptions): string => {
     const config = REGEXPS.map;
 
     if (config.start_regexp) {
@@ -54,7 +54,7 @@ const renderMap: ParserFunc = (string: string, data: object|null, options: Parse
                         }
                     }
                     string = start + generated.join('') + end;
-                } else if (options.defaultValue === 'empty' || options.defaultValue === 'default') {
+                } else if (!options || options.defaultValue === 'empty' || options.defaultValue === 'default') {
                     // Remove the matched string from the XML content.
                     string = start + end;
                 }

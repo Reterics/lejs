@@ -1,7 +1,7 @@
 import {REGEXPS} from "../constants";
 import {ParserFunc, ParserRenderOptions} from "../types/parsers";
 
-const renderIfStatement: ParserFunc = (string: string, data: object|null, options: ParserRenderOptions): string => {
+const renderIfStatement: ParserFunc = (string: string, data?: object|null, options?: ParserRenderOptions): string => {
     const config = REGEXPS.if;
     if (config.start_regexp) {
         const matches = string.match(config.start_regexp) || [];
@@ -30,7 +30,7 @@ const renderIfStatement: ParserFunc = (string: string, data: object|null, option
                     const content = string.substring(lastIndex + starterTag.length, closingPosition);
 
                     string = start + content + end;
-                } else if (options.defaultValue === 'empty' || options.defaultValue === 'default') {
+                } else if (!options || options.defaultValue === 'empty' || options.defaultValue === 'default') {
                     // Remove the matched string from the XML content.
                     string = start + end;
                 }

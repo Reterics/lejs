@@ -2,7 +2,7 @@ import {REGEXPS} from "../constants";
 import {ParserConstant, ParserFunc, ParserRenderOptions} from "../types/parsers";
 
 
-const renderVariable: ParserFunc = (string: string, data: object|null, options: ParserRenderOptions): string => {
+const renderVariable: ParserFunc = (string: string, data?: object|null, options?: ParserRenderOptions): string => {
     const config:ParserConstant = options && options.config ? options.config : REGEXPS.variable;
     return string.replaceAll(config.regexp, (substr) => {
         const variable = substr.substring(config.start.length, substr.length - config.end.length);
@@ -17,7 +17,7 @@ const renderVariable: ParserFunc = (string: string, data: object|null, options: 
             }
             return data[variable];
         }
-        if (options.defaultValue === 'keep') {
+        if (options && options.defaultValue === 'keep') {
             return string;
         }
         return "";
